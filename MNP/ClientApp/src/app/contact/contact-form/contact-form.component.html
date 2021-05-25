@@ -1,0 +1,76 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="id"
+         value="service.formData.id" />
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Name</label>
+      <input class="form-control form-control-lg" placeholder="Name"
+             name="name" #name="ngModel" [(ngModel)]="service.formData.name" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Address</label>
+      <input class="form-control form-control-lg" placeholder="Address"
+             name="address" #address="ngModel" [(ngModel)]="service.formData.address" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Job Title</label>
+      <input class="form-control form-control-lg" placeholder="Job Title"
+             name="jobTitle" #jobTitle="ngModel" [(ngModel)]="service.formData.jobTitle" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Phone</label>
+      <input class="form-control form-control-lg" placeholder="0000000000"
+             name="phone" #phone="ngModel" [(ngModel)]="service.formData.phone"
+             pattern="^((\\+91-?)|0)?[0-9]{10}$" />
+
+      <div class="md-errors-spacer" [hidden]="phone.valid || phone.untouched">
+        <div *ngIf="phone.errors && phone.errors.required">
+          Phone number is required
+        </div>
+        <div *ngIf="phone.errors && phone.errors.pattern">
+          Phone number is invalid
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Company</label>
+      <input class="form-control form-control-lg" placeholder="Company"
+             name="company" #company="ngModel" [(ngModel)]="service.formData.company" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Email</label>
+      <input class="form-control form-control-lg" placeholder="Email"
+             name="email" #email="ngModel" [(ngModel)]="service.formData.email" required
+             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+
+      <div class="md-errors-spacer" [hidden]="email.valid || email.untouched">
+        <div *ngIf="email.errors && email.errors.required">
+          Email is required
+        </div>
+        <div *ngIf="email.errors && email.errors.pattern">
+          Email is invalid
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group col-md-3">
+      <label>Comments</label>
+      <input class="form-control form-control-lg" placeholder="Comments"
+             name="comments" #comments="ngModel" [(ngModel)]="service.formData.comments" required />
+    </div>
+    <div class="form-group col-md-3">
+      <label>Last Contacted</label>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date"
+               name="lastContacted" #lastContacted="ngModel" [(ngModel)]="service.formData.lastContacted">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </div>
+    <div class="form-group" align="right">
+      <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+  </div>
+</form>

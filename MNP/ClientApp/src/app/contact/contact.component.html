@@ -1,0 +1,36 @@
+<div class="jumbotron py-2">
+  <h1 class="display-4 text-center">MNP Contact Portal</h1>
+</div>
+<div class="row">
+  <app-contact-form></app-contact-form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Job Title</th>
+        <th>Phone</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Last Contacted</th>
+        <th>Comments</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of service.list">
+        <td (click)="populateForm(row)">{{row.name}}</td>
+        <td (click)="populateForm(row)">{{row.address}}</td>
+        <td (click)="populateForm(row)">{{row.jobTitle}}</td>
+        <td (click)="populateForm(row)">{{row.phone}}</td>
+        <td (click)="populateForm(row)">{{row.company}}</td>
+        <td (click)="populateForm(row)">{{row.email}}</td>
+        <td (click)="populateForm(row)">{{row.lastContacted}}</td>
+        <td (click)="populateForm(row)">{{row.comments}}</td>
+        <td>
+          <button type="button" (click)="onDelete(row.id)" class="btn btn-light">X</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> 
